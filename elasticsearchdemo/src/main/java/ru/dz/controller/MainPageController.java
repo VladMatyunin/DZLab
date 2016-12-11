@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import ru.dz.elastic.MovieSearchService;
 import ru.dz.entity.Movie;
+import ru.dz.repository.AutoCompite;
 import ru.dz.repository.MovieRepository;
 import ru.dz.repository.RatingRepository;
 
@@ -22,22 +23,25 @@ public class MainPageController {
     MovieSearchService movieSearchService;
     @Autowired
     MovieRepository movieRepository;
-    @PostConstruct
-    private void init(){
+    @Autowired
+    RatingRepository ratingRepository;
 
+    @PostConstruct
+    private void init() {
+//        AutoCompite autoCompite = new AutoCompite();
+//        movieRepository.save(autoCompite.loadMoviesFromJson());
         ArrayList<Movie> movies = (ArrayList<Movie>) movieRepository.findAll();
         for (Movie movy : movies) {
-            if (Objects.equals(movy.getImage(), null)){
+            if (Objects.equals(movy.getImage(), null)) {
                 movy.setImage("/resources/images/default_film.jpg");
                 movieRepository.saveAndFlush(movy);
             }
             movieSearchService.add(movy);
         }
     }
-    @Autowired
-    RatingRepository ratingRepository;
+
     @RequestMapping(value = "/main", method = RequestMethod.GET)
-    public String loadpage(){
+    public String loadpage() {
 
         return "main";
     }

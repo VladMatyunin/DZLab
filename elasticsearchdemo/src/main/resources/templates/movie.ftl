@@ -14,7 +14,7 @@
             </h3>
             <div class="grid images_3_of_2">
                 <div class="movie_image">
-                    <span class="movie_rating">${movie.getAbsoluteRating()}</span>
+                    <#--<span class="movie_rating">${movie.getAbsoluteRating()}</span>-->
                     <#if movie.image??>
                         <img src="${movie.image}" class="img-responsive" alt=""/>
                     <#else>
@@ -37,9 +37,9 @@
                                     <#else >
                                     <fieldset class="rating2">
 
-                                        <#list 1..movie.getRealRating() as r>
-                                            <span class="glyphicon glyphicon-star" style="color: greenyellow"></span>
-                                        </#list>
+                                        <#--<#list 1..movie.getRealRating() as r>-->
+                                            <#--<span class="glyphicon glyphicon-star" style="color: greenyellow"></span>-->
+                                        <#--</#list>-->
 
                                     </fieldset>
                                     </#if>

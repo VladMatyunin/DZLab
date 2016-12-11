@@ -3,8 +3,9 @@ package ru.dz.repository;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 import ru.dz.entity.Movie;
-import ru.dz.entity.MyUser;
 import ru.dz.entity.Rating;
+import ru.dz.entity.User;
+
 
 import java.util.List;
 
@@ -13,5 +14,5 @@ import java.util.List;
  */
 @Repository
 public interface RatingRepository extends JpaRepository<Rating, Long> {
-    List<MyUser> findByMovie(Movie movie);
+    List<User> findByMovie(Movie movie);
 }

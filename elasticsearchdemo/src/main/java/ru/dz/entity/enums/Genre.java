@@ -1,4 +1,4 @@
-package ru.dz.entity;
+package ru.dz.entity.enums;
 
 /**
  * Created by Vlad.M on 23.11.2016.

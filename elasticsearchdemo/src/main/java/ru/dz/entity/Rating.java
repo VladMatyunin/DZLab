@@ -1,28 +1,38 @@
 package ru.dz.entity;
+
 import javax.persistence.*;
-/**
- * Created by Vlad.M on 07.12.2016.
- */
+
 @Entity
+@Table
+@IdClass(UserMovie.class)
 public class Rating {
-    public Rating(){}
+
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
     @ManyToOne
-    @JoinTable(name = "rated_movies")
+    @JoinColumn(name = "user_id", referencedColumnName = "id")
+    private User user;
+
+    private int rating;
+
+    @Id
+    @ManyToOne
+    @JoinColumn(name = "movie_id", referencedColumnName = "id")
     private Movie movie;
-    @OneToOne
-    private MyUser user;
-    private Integer rating;
 
-
-    public Long getId() {
-        return id;
+    public User getUser() {
+        return user;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+    public int getRating() {
+        return rating;
+    }
+
+    public void setRating(int rating) {
+        this.rating = rating;
     }
 
     public Movie getMovie() {
@@ -31,21 +41,5 @@ public class Rating {
 
     public void setMovie(Movie movie) {
         this.movie = movie;
-    }
-
-    public MyUser getUser() {
-        return user;
-    }
-
-    public void setUser(MyUser user) {
-        this.user = user;
-    }
-
-    public Integer getRating() {
-        return rating;
-    }
-
-    public void setRating(Integer rating) {
-        this.rating = rating;
     }
 }
